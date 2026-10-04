@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Houra</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f9d423, #ff4e50, #8a2be2);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .scene {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+      animation: bounce 1.5s infinite;
+    }
+
+    .cake-wrap {
+      position: relative;
+      display: inline-block;
+      margin: 20px auto;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .cake {
+      width: 180px;
+      height: 110px;
+      background: linear-gradient(#ffb07c, #ff7f50);
+      border-radius: 10px 10px 18px 18px;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .cake::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -24px;
+      height: 26px;
+      background: linear-gradient(#fff2b2, #f9d423);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .cake::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: -35px;
+      height: 14px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 0 #fff, 0 28px 0 #fff;
+    }
+
+    .candle {
+      position: absolute;
+      width: 8px;
+      height: 28px;
+      background: #fff;
+      left: 50%;
+      top: -45px;
+      transform: translateX(-50%);
+      border-radius: 5px;
+    }
+
+    .flame {
+      position: absolute;
+      width: 14px;
+      height: 18px;
+      background: linear-gradient(#ffb347, #ff4d4d);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      left: 50%;
+      top: -22px;
+      transform: translateX(-50%);
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    .butterfly {
+      position: absolute;
+      font-size: 2rem;
+      animation: fly 10s linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .b1 { top: 10%; left: -15%; animation-delay: 0s; }
+    .b2 { top: 25%; left: -10%; animation-delay: 2s; }
+    .b3 { top: 50%; left: -20%; animation-delay: 4s; }
+    .b4 { top: 70%; left: -12%; animation-delay: 1s; }
+    .b5 { top: 35%; left: -18%; animation-delay: 6s; }
+
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); }
+      100% { transform: translateX(-50%) scale(1.35); }
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      50% {
+        transform: translateX(50vw) translateY(-30px) rotate(20deg);
+      }
+      100% {
+        transform: translateX(100vw) translateY(40px) rotate(-20deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(300deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="butterfly b1">🦋</div>
+  <div class="butterfly b2">🦋</div>
+  <div class="butterfly b3">🦋</div>
+  <div class="butterfly b4">🦋</div>
+  <div class="butterfly b5">🦋</div>
+
+  <div class="scene">
+    <h1>Happy Birthday Houra</h1>
+
+    <div class="cake-wrap">
+      <div class="cake">
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const colors = ["#ffd166", "#ff6b6b", "#4ecdc4", "#f7fff7", "#b5179e", "#80ed99"];
+
+    function createConfetti() {
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        confetti.style.animationDelay = (Math.random() * 2) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 6000);
+      }
+    }
+
+    setInterval(createConfetti, 2000);
+  </script>
+</body>
+</html>
