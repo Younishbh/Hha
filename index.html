@@ -1,202 +1,51 @@
-<!DOCTYPE html>
+from pathlib import Path
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Houra</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #f9d423, #ff4e50, #8a2be2);
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      position: relative;
-    }
-
-    .scene {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    h1 {
-      color: white;
-      font-size: 3rem;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-      margin-bottom: 20px;
-      animation: bounce 1.5s infinite;
-    }
-
-    .cake-wrap {
-      position: relative;
-      display: inline-block;
-      margin: 20px auto;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .cake {
-      width: 180px;
-      height: 110px;
-      background: linear-gradient(#ffb07c, #ff7f50);
-      border-radius: 10px 10px 18px 18px;
-      position: relative;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    .cake::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -24px;
-      height: 26px;
-      background: linear-gradient(#fff2b2, #f9d423);
-      border-radius: 12px 12px 0 0;
-    }
-
-    .cake::after {
-      content: "";
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      top: -35px;
-      height: 14px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 14px 0 #fff, 0 28px 0 #fff;
-    }
-
-    .candle {
-      position: absolute;
-      width: 8px;
-      height: 28px;
-      background: #fff;
-      left: 50%;
-      top: -45px;
-      transform: translateX(-50%);
-      border-radius: 5px;
-    }
-
-    .flame {
-      position: absolute;
-      width: 14px;
-      height: 18px;
-      background: linear-gradient(#ffb347, #ff4d4d);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      left: 50%;
-      top: -22px;
-      transform: translateX(-50%);
-      animation: flicker 0.5s infinite alternate;
-    }
-
-    .butterfly {
-      position: absolute;
-      font-size: 2rem;
-      animation: fly 10s linear infinite;
-      opacity: 0.9;
-      z-index: 1;
-    }
-
-    .b1 { top: 10%; left: -15%; animation-delay: 0s; }
-    .b2 { top: 25%; left: -10%; animation-delay: 2s; }
-    .b3 { top: 50%; left: -20%; animation-delay: 4s; }
-    .b4 { top: 70%; left: -12%; animation-delay: 1s; }
-    .b5 { top: 35%; left: -18%; animation-delay: 6s; }
-
-    .confetti {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 2px;
-      animation: fall linear infinite;
-      opacity: 0.9;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    @keyframes flicker {
-      0% { transform: translateX(-50%) scale(1); }
-      100% { transform: translateX(-50%) scale(1.35); }
-    }
-
-    @keyframes fly {
-      0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% { opacity: 1; }
-      50% {
-        transform: translateX(50vw) translateY(-30px) rotate(20deg);
-      }
-      100% {
-        transform: translateX(100vw) translateY(40px) rotate(-20deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(300deg);
-        opacity: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Hawraa</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow:hidden;display:grid;place-items:center;
+font-family:Georgia,serif;background:radial-gradient(circle at 50% 25%,#fff8fd,#f8dff0 55%,#e9c9ed);color:#8b3d78}
+.card{position:relative;text-align:center;width:min(92vw,520px);padding:42px 18px 35px;border:1px solid #ffffffaa;
+border-radius:30px;background:#ffffff72;box-shadow:0 20px 60px #9c548333;backdrop-filter:blur(8px)}
+h1{font-size:clamp(2rem,8vw,3.3rem);line-height:1.12;margin:0 0 12px;text-shadow:0 3px 0 #fff}
+.name{color:#c04d98}
+p{font-size:1.1rem;color:#9a648e;margin:0 0 18px}
+.cake{position:relative;width:180px;height:145px;margin:12px auto 0}
+.plate{position:absolute;bottom:5px;left:0;width:180px;height:18px;background:#fff;border-radius:50%;box-shadow:0 5px 0 #e8a9cc}
+.base{position:absolute;bottom:20px;left:20px;width:140px;height:58px;border-radius:12px 12px 18px 18px;background:linear-gradient(#ffb7d5 0 18%,#fff0f6 18% 100%);box-shadow:inset 0 -7px #ef9bc2}
+.top{position:absolute;bottom:72px;left:20px;width:140px;height:24px;border-radius:50%;background:#fff0f6;border-bottom:5px solid #f3a2c7}
+.drip{position:absolute;bottom:57px;left:38px;width:13px;height:20px;border-radius:0 0 9px 9px;background:#fff0f6;box-shadow:32px 4px #fff0f6,70px -1px #fff0f6,94px 3px #fff0f6}
+.candle{position:absolute;bottom:94px;left:86px;width:8px;height:34px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 5px,#c47bb6 5px 10px)}
+.flame{position:absolute;bottom:128px;left:82px;width:16px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:radial-gradient(circle at 65% 65%,#fff7a8 0 20%,#ffb13b 55%,#ff719b);animation:flicker .7s infinite alternate}
+@keyframes flicker{to{transform:rotate(-38deg) scale(.86)}}
+.butterfly{position:fixed;font-size:27px;filter:drop-shadow(0 3px 3px #b76a9a55);animation:fly 9s ease-in-out infinite}
+.b1{left:7%;top:18%;animation-delay:-2s}.b2{right:9%;top:22%;animation-delay:-5s;font-size:34px}.b3{left:15%;bottom:15%;animation-delay:-7s}.b4{right:12%;bottom:13%;animation-delay:-1s}
+@keyframes fly{0%,100%{transform:translate(0,0) rotate(-12deg)}25%{transform:translate(35px,-48px) rotate(15deg)}50%{transform:translate(-12px,-85px) rotate(-8deg)}75%{transform:translate(-38px,-28px) rotate(18deg)}}
+.sparkle{position:fixed;color:#fff;font-size:22px;animation:twinkle 2s ease-in-out infinite alternate}
+.s1{left:20%;top:48%}.s2{right:20%;top:57%;animation-delay:.8s}.s3{right:30%;top:10%;animation-delay:1.2s}
+@keyframes twinkle{to{opacity:.25;transform:scale(.65)}}
+.small{font-size:.9rem;margin-top:15px;color:#b17aa7}
+</style>
 </head>
 <body>
-  <div class="butterfly b1">🦋</div>
-  <div class="butterfly b2">🦋</div>
-  <div class="butterfly b3">🦋</div>
-  <div class="butterfly b4">🦋</div>
-  <div class="butterfly b5">🦋</div>
-
-  <div class="scene">
-    <h1>Happy Birthday Houra</h1>
-
-    <div class="cake-wrap">
-      <div class="cake">
-        <div class="candle">
-          <div class="flame"></div>
-        </div>
-      </div>
-    </div>
+<div class="butterfly b1">🦋</div><div class="butterfly b2">🦋</div>
+<div class="butterfly b3">🦋</div><div class="butterfly b4">🦋</div>
+<div class="sparkle s1">✦</div><div class="sparkle s2">✧</div><div class="sparkle s3">✦</div>
+<main class="card">
+  <h1>Happy Birthday,<br><span class="name">Hawraa!</span></h1>
+  <p>Wishing you a day full of magic, smiles &amp; love ✨</p>
+  <div class="cake" aria-label="Birthday cake">
+    <div class="flame"></div><div class="candle"></div>
+    <div class="top"></div><div class="drip"></div><div class="base"></div><div class="plate"></div>
   </div>
-
-  <script>
-    const colors = ["#ffd166", "#ff6b6b", "#4ecdc4", "#f7fff7", "#b5179e", "#80ed99"];
-
-    function createConfetti() {
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        confetti.style.animationDelay = (Math.random() * 2) + "s";
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 6000);
-      }
-    }
-
-    setInterval(createConfetti, 2000);
-  </script>
+  <div class="small">Make a wish and let it fly! 💗</div>
+</main>
 </body>
-</html>
+</html>'''
+path = Path("/mnt/data/happy_birthday_hawraa.html")
+path.write_text(html, encoding="utf-8")
+print(path, path.exists(), path.stat().st_size)
